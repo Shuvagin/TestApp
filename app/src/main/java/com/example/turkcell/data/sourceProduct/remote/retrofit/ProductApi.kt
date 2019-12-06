@@ -1,7 +1,7 @@
-package com.example.turkcell.data.retrofit
+package com.example.turkcell.data.sourceProduct.remote.retrofit
 
-import com.example.turkcell.data.model.ProductDetail
-import com.example.turkcell.data.model.Products
+import com.example.turkcell.data.sourceProduct.remote.model.ProductDetail
+import com.example.turkcell.data.sourceProduct.remote.model.Products
 import retrofit2.http.GET
 import retrofit2.http.Query
 

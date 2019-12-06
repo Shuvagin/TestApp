@@ -12,11 +12,11 @@
         tools:layout="@layout/main_fragment" >
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/productDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.example.turkcell.ui.detail.DetailFragment"
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.turkcell.ui.detail.ProductDetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_product_detail" />
 </navigation>

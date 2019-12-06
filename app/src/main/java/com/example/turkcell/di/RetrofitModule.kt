@@ -1,6 +1,6 @@
 package com.example.turkcell.di
 
-import com.example.turkcell.data.retrofit.ProductApi
+import com.example.turkcell.data.sourceProduct.remote.retrofit.ProductApi
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

@@ -1,4 +1,4 @@
-package com.example.turkcell.data.model
+package com.example.turkcell.data.sourceProduct.remote.model
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Json
 
@@ -6,10 +6,10 @@ import com.squareup.moshi.Json
 @JsonClass(generateAdapter = true)
 data class Products(
     @Json(name = "products")
-    val products: List<Product> = listOf()
+    val products: List<RemoteProduct> = listOf()
 ) {
     @JsonClass(generateAdapter = true)
-    data class Product(
+    data class RemoteProduct(
         @Json(name = "image")
         val image: String = "",
         @Json(name = "name")

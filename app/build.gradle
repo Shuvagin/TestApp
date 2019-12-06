@@ -77,6 +77,13 @@ dependencies {
     // --- SharedPreferences ---
     implementation "androidx.preference:preference-ktx:1.1.0"
 
+    // --- Room ---
+    implementation "androidx.room:room-runtime:2.2.2"
+    kapt "androidx.room:room-compiler:2.2.2"
+    // kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:2.2.2"
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

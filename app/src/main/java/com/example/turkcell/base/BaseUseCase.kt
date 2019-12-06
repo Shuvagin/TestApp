@@ -1,6 +1,4 @@
-package com.example.turkcell.ui.base
-
-import kotlinx.coroutines.CoroutineScope
+package com.example.turkcell.base
 
 abstract class BaseUseCase {
 
