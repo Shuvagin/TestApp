@@ -20,7 +20,7 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_product_detail" >
         <argument
-            android:name="productId"
-            app:argType="string" />
+            android:name="product"
+            app:argType="com.example.turkcell.data.sourceProduct.local.model.LocalProduct" />
     </fragment>
 </navigation>

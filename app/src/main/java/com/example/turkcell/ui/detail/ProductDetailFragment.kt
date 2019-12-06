@@ -1,15 +1,22 @@
 package com.example.turkcell.ui.detail
 
+import android.content.Context
 import android.os.Bundle
+import android.transition.Slide
+import android.transition.TransitionInflater
+import android.transition.TransitionManager
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.navArgs
 import com.example.turkcell.R
 import com.example.turkcell.databinding.FragmentProductDetailBinding
 import com.example.turkcell.di.injector
+import com.example.turkcell.di.util.activityViewModel
 import com.example.turkcell.di.util.navGraphViewModel
 
 /**
@@ -17,24 +24,36 @@ import com.example.turkcell.di.util.navGraphViewModel
  */
 class ProductDetailFragment : Fragment() {
 
-    lateinit var binding: FragmentProductDetailBinding
-//    private val mainViewModel by navGraphViewModel(R.id.nav_graph) {
-//        injector.mainViewModel
-//    }
+    private val args: ProductDetailFragmentArgs by navArgs()
+    private lateinit var binding: FragmentProductDetailBinding
+    private val mainViewModel by activityViewModel {
+        injector.mainViewModel
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        TransitionInflater.from(context).inflateTransition(android.R.transition.move).apply {
+            sharedElementEnterTransition = this
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_product_detail,container,false)
+        binding = FragmentProductDetailBinding.inflate(inflater, container, false).apply {
+            product = args.product
+            viewmodel = mainViewModel
+            lifecycleOwner = viewLifecycleOwner
+            executePendingBindings()
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        mainViewModel.selectedProductItem.observe(viewLifecycleOwner) {
-//            binding.product = it
-//        }
+        mainViewModel.itemId.value = args.product.productId
+
     }
 
 }

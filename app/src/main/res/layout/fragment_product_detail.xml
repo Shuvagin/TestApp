@@ -5,6 +5,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.turkcell.ui.main.MainViewModel" />
         <variable
             name="product"
             type="com.example.turkcell.data.sourceProduct.local.model.LocalProduct" />
@@ -15,24 +20,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.detail.ProductDetailFragment">
-
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:scaleY="5"
+            android:indeterminate="true"
+            android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
         <ImageView
-            loadImageUrl="@{product.image}"
             android:id="@+id/iv_photo"
+            loadImageUrl="@{product.image}"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/item_place_holder"
+            android:transitionName="@{@string/tn_iv_photo(product.productId)}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/logo" />
 
         <TextView
             android:id="@+id/tv_name"
-            android:text="@{product.name}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
+            android:text="@{product.name}"
             android:textSize="18sp"
+            android:transitionName="@{@string/tn_tv_name(product.productId)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_photo"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,12 +57,13 @@
 
         <TextView
             android:id="@+id/tv_price"
-            android:text="@{@string/main_fragment_price(product.price)}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
+            android:text="@{@string/main_fragment_price(product.price)}"
             android:textSize="18sp"
+            android:transitionName="@{@string/tn_tv_price(product.productId)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_photo"
             app:layout_constraintTop_toBottomOf="@+id/tv_name"
@@ -53,10 +71,11 @@
 
         <TextView
             android:id="@+id/tv_description"
-            android:text="@{product.description}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:minHeight="200dp"
             android:padding="12dp"
+            android:text="@{viewmodel.selectedProductItem.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_photo"

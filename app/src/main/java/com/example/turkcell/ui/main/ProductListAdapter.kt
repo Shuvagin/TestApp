@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -32,8 +33,13 @@ class ProductListAdapter : ListAdapter<LocalProduct, ProductListAdapter.ViewHold
         }
 
         private fun navigateToProductDetail(product: LocalProduct, binding: ItemProductBinding) {
-            val directions = MainFragmentDirections.actionMainFragmentToDetailFragment(product.productId)
-            binding.root.findNavController().navigate(directions)
+            val directions = MainFragmentDirections.actionMainFragmentToDetailFragment(product)
+            val extra = FragmentNavigatorExtras(
+                binding.ivImage to binding.ivImage.transitionName,
+                binding.tvName to binding.tvName.transitionName,
+                binding.tvPrice to binding.tvPrice.transitionName
+            )
+            binding.root.findNavController().navigate(directions, extra)
         }
 
         companion object {

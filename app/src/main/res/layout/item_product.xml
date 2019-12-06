@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="product"
             type="com.example.turkcell.data.sourceProduct.local.model.LocalProduct" />
@@ -28,12 +29,14 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:foregroundGravity="center"
+                android:transitionName="@{@string/tn_iv_photo(product.productId)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/item_place_holder" />
+                tools:src="@drawable/logo" />
 
             <TextView
+                android:transitionName="@{@string/tn_tv_name(product.productId)}"
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,6 +49,7 @@
                 tools:text="@tools:sample/last_names" />
 
             <TextView
+                android:transitionName="@{@string/tn_tv_price(product.productId)}"
                 android:id="@+id/tv_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

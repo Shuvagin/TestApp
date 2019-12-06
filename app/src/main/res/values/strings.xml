@@ -3,4 +3,8 @@
 
 
     <string name="main_fragment_price">%1$s</string>
+    <string name="tn_iv_photo">tn_iv_photo_%1$s</string>
+    <string name="tn_tv_name">tn_tv_name_%1$s</string>
+    <string name="tn_tv_price">tn_tv_price_%1$s</string>
+    <string name="all_connection_failed">Can not connect to server</string>
 </resources>

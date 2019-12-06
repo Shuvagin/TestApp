@@ -8,7 +8,7 @@ import coil.request.CachePolicy
 import com.example.turkcell.R
 
 @BindingAdapter("loadImageUrl")
-fun ImageView.loadImageUrl(url: String) {
+fun ImageView.loadImageUrl(url: String?) {
     this.load(url) {
         placeholder(R.drawable.logo)
         memoryCachePolicy(CachePolicy.ENABLED)
