@@ -10,6 +10,6 @@ class GetRemoteProductListUseCase @Inject constructor(
 ) : BaseUseCase() {
 
     suspend fun execute(): List<Products.Product> {
-       return remoteProductRepository.getProducts().products
+        return remoteProductRepository.getProducts().products
     }
 }

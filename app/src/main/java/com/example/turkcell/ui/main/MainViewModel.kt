@@ -2,15 +2,14 @@ package com.example.turkcell.ui.main
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.turkcell.MyApplication
 import com.example.turkcell.data.sourceProduct.local.model.LocalProduct
 import com.example.turkcell.ui.detail.domain.usecase.GetLocalProductDetailUseCase
 import com.example.turkcell.ui.detail.domain.usecase.LoadRemoteProductDetailUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetLocalProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetRemoteProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.SaveRemoteToLocalUseCase
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class MainViewModel @Inject constructor(
     application: Application,
@@ -45,13 +44,6 @@ class MainViewModel @Inject constructor(
     private val _errorMessage = MutableLiveData<String?>(null)
     val errorMessage: LiveData<String?> = _errorMessage
 
-    fun loadProductDescription(productId: String) {
-        viewModelScope.launch {
-            val product = getLocalProductDetailUseCase.execute(productId)
-        }
-
-    }
-
     private fun loadRemoteProducts() {
         viewModelScope.launch {
             try {
@@ -66,5 +58,4 @@ class MainViewModel @Inject constructor(
             }
         }
     }
-
 }

@@ -21,7 +21,6 @@ class ProductListAdapter : ListAdapter<LocalProduct, ProductListAdapter.ViewHold
         holder.bind(getItem(position))
     }
 
-
     class ViewHolder private constructor(private val binding: ViewDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -29,7 +28,7 @@ class ProductListAdapter : ListAdapter<LocalProduct, ProductListAdapter.ViewHold
             val itemProductBinding = binding as ItemProductBinding
             itemProductBinding.product = product
             itemProductBinding.executePendingBindings()
-            itemProductBinding.root.setOnClickListener { navigateToProductDetail(product,itemProductBinding) }
+            itemProductBinding.root.setOnClickListener { navigateToProductDetail(product, itemProductBinding) }
         }
 
         private fun navigateToProductDetail(product: LocalProduct, binding: ItemProductBinding) {
@@ -50,7 +49,6 @@ class ProductListAdapter : ListAdapter<LocalProduct, ProductListAdapter.ViewHold
                 return ViewHolder(binding)
             }
         }
-
     }
 }
 

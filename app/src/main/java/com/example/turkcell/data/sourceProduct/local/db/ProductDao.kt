@@ -17,5 +17,4 @@ interface ProductDao : BaseDao<LocalProduct> {
 
     @Query("UPDATE LocalProductDB SET description=:description WHERE productId=:productId")
     suspend fun updateProductDescription(productId: String, description: String)
-
 }

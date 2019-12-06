@@ -4,9 +4,9 @@ import com.example.turkcell.data.sourceProduct.local.LocalProductRepository
 import com.example.turkcell.data.sourceProduct.local.model.LocalProduct
 import com.example.turkcell.data.sourceProduct.remote.model.Products
 import com.example.turkcell.ui.main.domain.adapter.ProductAdapter
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class SaveRemoteToLocalUseCase @Inject constructor(
     private val localProductRepository: LocalProductRepository
@@ -20,6 +20,4 @@ class SaveRemoteToLocalUseCase @Inject constructor(
         }
         localProductRepository.saveProducts(localList)
     }
-
-
 }

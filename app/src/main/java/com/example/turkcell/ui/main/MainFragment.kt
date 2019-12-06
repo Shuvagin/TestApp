@@ -9,13 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.turkcell.R
 import com.example.turkcell.databinding.MainFragmentBinding
 import com.example.turkcell.di.injector
 import com.example.turkcell.di.util.activityViewModel
-import com.example.turkcell.di.util.navGraphViewModel
-import com.google.android.material.snackbar.Snackbar
-
 
 class MainFragment : Fragment() {
 
@@ -26,7 +22,8 @@ class MainFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = MainFragmentBinding.inflate(inflater, container, false).apply {
@@ -58,6 +55,4 @@ class MainFragment : Fragment() {
             productAdapter.submitList(it)
         }
     }
-
-
 }

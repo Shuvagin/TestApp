@@ -1,7 +1,6 @@
 package com.example.turkcell.util
 
 import android.widget.ImageView
-import androidx.core.graphics.drawable.RoundedBitmapDrawable
 import androidx.databinding.BindingAdapter
 import coil.api.load
 import coil.request.CachePolicy

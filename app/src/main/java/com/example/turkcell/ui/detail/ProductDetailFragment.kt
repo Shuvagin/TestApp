@@ -2,22 +2,16 @@ package com.example.turkcell.ui.detail
 
 import android.content.Context
 import android.os.Bundle
-import android.transition.Slide
 import android.transition.TransitionInflater
-import android.transition.TransitionManager
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import com.example.turkcell.R
 import com.example.turkcell.databinding.FragmentProductDetailBinding
 import com.example.turkcell.di.injector
 import com.example.turkcell.di.util.activityViewModel
-import com.example.turkcell.di.util.navGraphViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -38,7 +32,8 @@ class ProductDetailFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProductDetailBinding.inflate(inflater, container, false).apply {
@@ -53,7 +48,5 @@ class ProductDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainViewModel.itemId.value = args.product.productId
-
     }
-
 }
