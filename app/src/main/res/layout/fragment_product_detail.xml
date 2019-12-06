@@ -31,11 +31,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
+
         <ImageView
             android:id="@+id/iv_photo"
             loadImageUrl="@{product.image}"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:scaleType="fitCenter"
             android:transitionName="@{@string/tn_iv_photo(product.productId)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,21 +47,20 @@
             android:id="@+id/tv_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
             android:text="@{product.name}"
             android:textSize="18sp"
             android:transitionName="@{@string/tn_tv_name(product.productId)}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_photo"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_photo"
             tools:text="Apple" />
 
         <TextView
             android:id="@+id/tv_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
             android:text="@{@string/main_fragment_price(product.price)}"
             android:textSize="18sp"

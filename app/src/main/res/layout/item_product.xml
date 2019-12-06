@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:foregroundGravity="center"
+                android:scaleType="fitCenter"
                 android:transitionName="@{@string/tn_iv_photo(product.productId)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

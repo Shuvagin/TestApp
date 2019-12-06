@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Status bar color ...-->
@@ -31,6 +31,14 @@
 
     <style name="Theme.MyApp.Main" parent="AppTheme">
 
+    </style>
+
+    <style name="Theme.MyApp.Splash" parent="AppTheme">
+        <!--        <item name="android:windowTranslucentStatus">true</item>-->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowShowWallpaper">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:ignore="NewApi">shortEdges</item>
     </style>
 
     <style name="ShapeAppearance.MyApp.SmallComponent.Light" parent="ShapeAppearance.MaterialComponents.SmallComponent">
