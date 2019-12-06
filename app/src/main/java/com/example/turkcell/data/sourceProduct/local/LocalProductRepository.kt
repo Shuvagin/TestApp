@@ -15,7 +15,7 @@ class LocalProductRepository @Inject constructor(private val productDatabase: Pr
         return productDatabase.productDao().getLocalProducts()
     }
 
-    suspend fun getProduct(productId: Int): LocalProduct {
+    suspend fun getProduct(productId: String): LiveData<LocalProduct> {
         return productDatabase.productDao().getLocalProduct(productId)
     }
 }

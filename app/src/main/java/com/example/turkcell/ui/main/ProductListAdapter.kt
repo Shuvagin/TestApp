@@ -3,6 +3,7 @@ package com.example.turkcell.ui.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,12 @@ class ProductListAdapter : ListAdapter<LocalProduct, ProductListAdapter.ViewHold
             val itemProductBinding = binding as ItemProductBinding
             itemProductBinding.product = product
             itemProductBinding.executePendingBindings()
+            itemProductBinding.root.setOnClickListener { navigateToProductDetail(product,itemProductBinding) }
+        }
+
+        private fun navigateToProductDetail(product: LocalProduct, binding: ItemProductBinding) {
+            val directions = MainFragmentDirections.actionMainFragmentToDetailFragment(product.productId)
+            binding.root.findNavController().navigate(directions)
         }
 
         companion object {

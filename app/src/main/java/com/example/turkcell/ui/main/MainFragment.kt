@@ -27,7 +27,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = MainFragmentBinding.inflate(layoutInflater, container, false).apply {
+        binding = MainFragmentBinding.inflate(inflater, container, false).apply {
             viewmodel = mainViewModel
             lifecycleOwner = viewLifecycleOwner
         }

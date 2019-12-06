@@ -13,7 +13,7 @@ class RemoteProductRepository @Inject constructor(
         productApi.getProducts()
     }
 
-    suspend fun getProduct(productId: Int) = withContext(Dispatchers.IO) {
+    suspend fun getProduct(productId: String) = withContext(Dispatchers.IO) {
         productApi.getProduct(productId)
     }
 

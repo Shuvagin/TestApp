@@ -11,5 +11,5 @@ interface ProductApi {
     suspend fun getProducts(): Products
 
     @GET("cart/{product_id}/detail")
-    suspend fun getProduct(@Query("product_id") productId: Int): ProductDetail
+    suspend fun getProduct(@Query("product_id") productId: String): ProductDetail
 }

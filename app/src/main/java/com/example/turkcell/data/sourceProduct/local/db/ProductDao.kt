@@ -13,8 +13,9 @@ interface ProductDao : BaseDao<LocalProduct> {
     fun getLocalProducts(): LiveData<List<LocalProduct>>
 
     @Query("SELECT * FROM LocalProductDB WHERE productId =:id")
-    suspend fun getLocalProduct(id: Int): LocalProduct
+    fun getLocalProduct(id: String): LiveData<LocalProduct>
 
     @Query("UPDATE LocalProductDB SET description=:description WHERE productId=:productId")
     suspend fun updateProductDescription(productId: Int, description: String)
+
 }
