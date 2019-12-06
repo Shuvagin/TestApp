@@ -12,6 +12,5 @@ fun ImageView.loadImageUrl(url: String) {
     this.load(url) {
         placeholder(R.drawable.logo)
         memoryCachePolicy(CachePolicy.ENABLED)
-        error(R.drawable.logo)
     }
 }

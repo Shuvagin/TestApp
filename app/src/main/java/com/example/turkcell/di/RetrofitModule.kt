@@ -13,7 +13,7 @@ object RetrofitModule {
     @Provides
     @Reusable
     fun provideRandomUser(): ProductApi =
-        Retrofit.Builder().baseUrl("https://s3-eu-west-1.amazonaws.com/developer-application-test/")
+        Retrofit.Builder().baseUrl("https://s3-eu-west-1.amazonaws.com/developer-application-test/cart/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build().create(ProductApi::class.java)
 }

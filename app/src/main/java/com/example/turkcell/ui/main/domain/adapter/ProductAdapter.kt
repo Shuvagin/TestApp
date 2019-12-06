@@ -5,7 +5,7 @@ import com.example.turkcell.data.sourceProduct.remote.model.Products
 
 object ProductAdapter {
 
-    fun toLocal(remoteProduct: Products.RemoteProduct): LocalProduct {
+    fun toLocal(remoteProduct: Products.Product): LocalProduct {
         return LocalProduct(
             remoteProduct.image,
             remoteProduct.name,
@@ -15,8 +15,8 @@ object ProductAdapter {
         )
     }
 
-    fun toRemote(localProduct: LocalProduct): Products.RemoteProduct {
-        return Products.RemoteProduct(
+    fun toRemote(localProduct: LocalProduct): Products.Product {
+        return Products.Product(
             localProduct.image,
             localProduct.name,
             localProduct.price,

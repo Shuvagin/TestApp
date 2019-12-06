@@ -2,14 +2,13 @@ package com.example.turkcell.data.sourceProduct.remote.model
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Json
 
-
 @JsonClass(generateAdapter = true)
 data class Products(
     @Json(name = "products")
-    val products: List<RemoteProduct> = listOf()
+    val products: List<Product> = listOf()
 ) {
     @JsonClass(generateAdapter = true)
-    data class RemoteProduct(
+    data class Product(
         @Json(name = "image")
         val image: String = "",
         @Json(name = "name")

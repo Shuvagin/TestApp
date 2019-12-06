@@ -7,9 +7,9 @@ import retrofit2.http.Query
 
 interface ProductApi {
 
-    @GET("cart/list")
+    @GET("list")
     suspend fun getProducts(): Products
 
-    @GET("cart/{product_id}/detail ")
+    @GET("cart/{product_id}/detail")
     suspend fun getProduct(@Query("product_id") productId: Int): ProductDetail
 }

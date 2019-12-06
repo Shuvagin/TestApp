@@ -3,10 +3,11 @@ package com.example.turkcell.ui.main
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.turkcell.data.sourceProduct.local.model.LocalProduct
-import com.example.turkcell.data.sourceProduct.remote.model.Products
+import com.example.turkcell.data.sourceProduct.remote.retrofit.ProductApi
 import com.example.turkcell.ui.main.domain.usecase.GetLocalProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetRemoteProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.SaveRemoteToLocalUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,7 +17,6 @@ class MainViewModel @Inject constructor(
     private val getLocalProductListUseCase: GetLocalProductListUseCase,
     private val saveRemoteToLocalUseCase: SaveRemoteToLocalUseCase
 ) : AndroidViewModel(application) {
-
 
     val listProducts: LiveData<List<LocalProduct>> = liveData {
         emitSource(getLocalProductListUseCase.execute())
@@ -32,20 +32,16 @@ class MainViewModel @Inject constructor(
 
     private fun loadRemoteProducts() {
         viewModelScope.launch {
-            _isLoading.value = true
-            getRemoteProductsUseCase.execute(this) { result: Result<List<Products.RemoteProduct>> ->
-                result.onSuccess {
-                    launch {
-                        saveRemoteToLocalUseCase.execute(this, it)
-                    }
-                }
-                result.onFailure {
-                    _errorMessage.value = it.message
-                }
+            try {
+                _isLoading.value = true
+                val products = getRemoteProductsUseCase.execute()
+                saveRemoteToLocalUseCase.execute(products)
+            } catch (e: Exception) {
+                _errorMessage.value = e.message
+            } finally {
+                _isLoading.value = false
             }
-            _isLoading.value = false
         }
-
     }
 
 }
