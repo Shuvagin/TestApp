@@ -1,22 +1,22 @@
 package com.example.turkcell.ui.main.domain.adapter
 
 import com.example.turkcell.data.sourceProduct.local.model.LocalProduct
-import com.example.turkcell.data.sourceProduct.remote.model.Products
+import com.example.turkcell.data.sourceProduct.remote.model.RemoteProducts
 
 object ProductAdapter {
 
-    fun toLocal(remoteProduct: Products.Product): LocalProduct {
+    fun toLocal(remoteRemoteProduct: RemoteProducts.RemoteProduct): LocalProduct {
         return LocalProduct(
-            remoteProduct.image,
-            remoteProduct.name,
-            remoteProduct.price,
-            remoteProduct.productId,
+            remoteRemoteProduct.image,
+            remoteRemoteProduct.name,
+            remoteRemoteProduct.price,
+            remoteRemoteProduct.productId,
             ""
         )
     }
 
-    fun toRemote(localProduct: LocalProduct): Products.Product {
-        return Products.Product(
+    fun toRemote(localProduct: LocalProduct): RemoteProducts.RemoteProduct {
+        return RemoteProducts.RemoteProduct(
             localProduct.image,
             localProduct.name,
             localProduct.price,

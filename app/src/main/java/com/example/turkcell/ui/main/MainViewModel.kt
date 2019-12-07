@@ -6,14 +6,14 @@ import com.example.turkcell.ui.detail.domain.usecase.GetLocalProductDetailUseCas
 import com.example.turkcell.ui.detail.domain.usecase.LoadRemoteProductDetailUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetLocalProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetRemoteProductListUseCase
-import com.example.turkcell.ui.main.domain.usecase.SaveRemoteToLocalUseCase
+import com.example.turkcell.ui.main.domain.usecase.SaveRemoteProductToLocalProductUseCase
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     application: Application,
     private val getRemoteProductsUseCase: GetRemoteProductListUseCase,
     private val getLocalProductListUseCase: GetLocalProductListUseCase,
-    private val saveRemoteToLocalUseCase: SaveRemoteToLocalUseCase,
+    private val saveRemoteToLocalUseCase: SaveRemoteProductToLocalProductUseCase,
     private val loadRemoteProductDetailUseCase: LoadRemoteProductDetailUseCase,
     private val getLocalProductDetailUseCase: GetLocalProductDetailUseCase
 ) : AndroidViewModel(application) {

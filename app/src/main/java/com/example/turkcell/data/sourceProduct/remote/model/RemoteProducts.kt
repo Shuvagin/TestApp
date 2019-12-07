@@ -3,12 +3,12 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Products(
+data class RemoteProducts(
     @Json(name = "products")
-    val products: List<Product> = listOf()
+    val remoteProducts: List<RemoteProduct> = listOf()
 ) {
     @JsonClass(generateAdapter = true)
-    data class Product(
+    data class RemoteProduct(
         @Json(name = "image")
         val image: String = "",
         @Json(name = "name")
