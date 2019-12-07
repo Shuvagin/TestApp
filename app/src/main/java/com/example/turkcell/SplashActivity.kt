@@ -33,10 +33,18 @@ class SplashActivity : AppCompatActivity() {
                 beginAnimation()
             }
         }
-        binding.root.systemUiVisibility =
-            (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+    }
+
+    override fun onPostResume() {
+        super.onPostResume()
+        if (fadeIn) {
+            window.decorView.run {
+                alpha = 0f
+                animate().cancel()
+                animate().alpha(1f).duration = DURATION_ANIMATION
+            }
+            fadeIn = false
+        }
     }
 
     private fun beginAnimation() {
@@ -54,18 +62,6 @@ class SplashActivity : AppCompatActivity() {
             delay(DELAY_BEFORE_FINISH_ACTIVITY)
             finish()
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-        }
-    }
-
-    override fun onPostResume() {
-        super.onPostResume()
-        if (fadeIn) {
-            window.decorView.run {
-                alpha = 0f
-                animate().cancel()
-                animate().alpha(1f).duration = DURATION_ANIMATION
-            }
-            fadeIn = false
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.turkcell.di.util
+package com.example.turkcell.util
 
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment

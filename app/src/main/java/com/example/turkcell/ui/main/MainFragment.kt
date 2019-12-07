@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.turkcell.R
 import com.example.turkcell.databinding.MainFragmentBinding
 import com.example.turkcell.di.injector
-import com.example.turkcell.di.util.activityViewModel
+import com.example.turkcell.util.activityViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

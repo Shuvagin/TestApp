@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.turkcell.R
 import com.example.turkcell.databinding.FragmentProductDetailBinding
 import com.example.turkcell.di.injector
-import com.example.turkcell.di.util.activityViewModel
+import com.example.turkcell.util.activityViewModel
 
 /**
  * A simple [Fragment] subclass.

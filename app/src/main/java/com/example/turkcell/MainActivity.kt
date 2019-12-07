@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
 import com.example.turkcell.databinding.MainActivityBinding
 import com.example.turkcell.di.injector
-import com.example.turkcell.di.util.viewModel
+import com.example.turkcell.util.viewModel
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {

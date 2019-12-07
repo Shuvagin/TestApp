@@ -2,14 +2,12 @@ package com.example.turkcell.ui.main
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.turkcell.data.sourceProduct.local.model.LocalProduct
 import com.example.turkcell.ui.detail.domain.usecase.GetLocalProductDetailUseCase
 import com.example.turkcell.ui.detail.domain.usecase.LoadRemoteProductDetailUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetLocalProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetRemoteProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.SaveRemoteToLocalUseCase
 import javax.inject.Inject
-import kotlinx.coroutines.launch
 
 class MainViewModel @Inject constructor(
     application: Application,
@@ -20,32 +18,35 @@ class MainViewModel @Inject constructor(
     private val getLocalProductDetailUseCase: GetLocalProductDetailUseCase
 ) : AndroidViewModel(application) {
 
-    val itemId = MutableLiveData<String>()
-    val selectedProductItem = itemId.switchMap {
-        liveData {
-            emitSource(getLocalProductDetailUseCase.execute(it))
-            try {
-                _isLoading.value = true
-                loadRemoteProductDetailUseCase.execute(it)
-            } catch (e: Exception) {
-                _errorMessage.value = e.message
-                _errorMessage.value = null
-            } finally {
-                _isLoading.value = false
-            }
-        }
-    }
-    val listProducts: LiveData<List<LocalProduct>> = liveData {
-        emitSource(getLocalProductListUseCase.execute())
-        loadRemoteProducts()
-    }
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean> = _isLoading
     private val _errorMessage = MutableLiveData<String?>(null)
     val errorMessage: LiveData<String?> = _errorMessage
+    val itemId = MutableLiveData<String>()
+    val selectedProductItem = itemId.switchMap {
+        liveData {
+            emitSource(getLocalProductDetailUseCase.execute(it))
+            loadRemoteProductDetails(it)
+        }
+    }
+    val listProducts = liveData {
+        emitSource(getLocalProductListUseCase.execute())
+        loadRemoteProducts()
+    }
 
-    private fun loadRemoteProducts() {
-        viewModelScope.launch {
+    private suspend fun loadRemoteProductDetails(productId: String) {
+        try {
+            _isLoading.value = true
+            loadRemoteProductDetailUseCase.execute(productId)
+        } catch (e: Exception) {
+            _errorMessage.value = e.message
+            _errorMessage.value = null
+        } finally {
+            _isLoading.value = false
+        }
+    }
+
+    private suspend fun loadRemoteProducts() {
             try {
                 _isLoading.value = true
                 val products = getRemoteProductsUseCase.execute()
@@ -56,6 +57,5 @@ class MainViewModel @Inject constructor(
             } finally {
                 _isLoading.value = false
             }
-        }
     }
 }
