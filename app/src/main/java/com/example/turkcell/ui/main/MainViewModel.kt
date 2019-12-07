@@ -3,7 +3,7 @@ package com.example.turkcell.ui.main
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.turkcell.ui.detail.domain.usecase.GetLocalProductDetailUseCase
-import com.example.turkcell.ui.detail.domain.usecase.LoadRemoteProductDetailUseCase
+import com.example.turkcell.ui.detail.domain.usecase.GetRemoteProductDetailUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetLocalProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.GetRemoteProductListUseCase
 import com.example.turkcell.ui.main.domain.usecase.SaveRemoteProductToLocalProductUseCase
@@ -14,7 +14,7 @@ class MainViewModel @Inject constructor(
     private val getRemoteProductsUseCase: GetRemoteProductListUseCase,
     private val getLocalProductListUseCase: GetLocalProductListUseCase,
     private val saveRemoteToLocalUseCase: SaveRemoteProductToLocalProductUseCase,
-    private val loadRemoteProductDetailUseCase: LoadRemoteProductDetailUseCase,
+    private val getRemoteProductDetailUseCase: GetRemoteProductDetailUseCase,
     private val getLocalProductDetailUseCase: GetLocalProductDetailUseCase
 ) : AndroidViewModel(application) {
 
@@ -22,8 +22,8 @@ class MainViewModel @Inject constructor(
     val isLoading: LiveData<Boolean> = _isLoading
     private val _errorMessage = MutableLiveData<String?>(null)
     val errorMessage: LiveData<String?> = _errorMessage
-    val itemId = MutableLiveData<String>()
-    val selectedProductItem = itemId.switchMap {
+    val productItemId = MutableLiveData<String>()
+    val selectedProduct = productItemId.switchMap {
         liveData {
             emitSource(getLocalProductDetailUseCase.execute(it))
             loadRemoteProductDetails(it)
@@ -37,7 +37,7 @@ class MainViewModel @Inject constructor(
     private suspend fun loadRemoteProductDetails(productId: String) {
         try {
             _isLoading.value = true
-            loadRemoteProductDetailUseCase.execute(productId)
+            getRemoteProductDetailUseCase.execute(productId)
         } catch (e: Exception) {
             _errorMessage.value = e.message
             _errorMessage.value = null

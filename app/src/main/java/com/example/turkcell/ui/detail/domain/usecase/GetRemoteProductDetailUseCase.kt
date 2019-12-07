@@ -7,7 +7,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LoadRemoteProductDetailUseCase @Inject constructor(
+class GetRemoteProductDetailUseCase @Inject constructor(
     private val remoteProductRepository: RemoteProductRepository,
     private val localProductRepository: LocalProductRepository
 ) : BaseUseCase() {
