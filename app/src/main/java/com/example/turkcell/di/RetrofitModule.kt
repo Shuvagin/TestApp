@@ -10,10 +10,15 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 @Module
 object RetrofitModule {
 
+    private const val AMAZON_URL =
+        "https://s3-eu-west-1.amazonaws.com/developer-application-test/cart/"
+
     @Provides
     @Reusable
     fun provideRandomUser(): ProductApi =
-        Retrofit.Builder().baseUrl("https://s3-eu-west-1.amazonaws.com/developer-application-test/cart/")
+        Retrofit.Builder()
+            .baseUrl(AMAZON_URL)
             .addConverterFactory(MoshiConverterFactory.create())
-            .build().create(ProductApi::class.java)
+            .build()
+            .create(ProductApi::class.java)
 }

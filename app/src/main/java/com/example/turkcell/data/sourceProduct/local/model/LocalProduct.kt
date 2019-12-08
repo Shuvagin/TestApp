@@ -8,10 +8,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "LocalProductDB")
 class LocalProduct(
+    @PrimaryKey
+    val productId: String,
     val image: String,
     val name: String,
     val price: Int,
-    @PrimaryKey
-    val productId: String,
     val description: String
 ) : Parcelable

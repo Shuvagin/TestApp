@@ -9,6 +9,7 @@ import com.example.turkcell.R
 @BindingAdapter("loadImageUrl")
 fun ImageView.loadImageUrl(url: String?) {
     this.load(url) {
+        crossfade(true)
         placeholder(R.drawable.logo)
         memoryCachePolicy(CachePolicy.ENABLED)
     }

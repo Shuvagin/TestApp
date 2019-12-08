@@ -7,10 +7,10 @@ object ProductAdapter {
 
     fun toLocal(remoteRemoteProduct: RemoteProducts.RemoteProduct): LocalProduct {
         return LocalProduct(
+            remoteRemoteProduct.productId,
             remoteRemoteProduct.image,
             remoteRemoteProduct.name,
             remoteRemoteProduct.price,
-            remoteRemoteProduct.productId,
             ""
         )
     }

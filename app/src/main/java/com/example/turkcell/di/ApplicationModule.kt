@@ -10,11 +10,15 @@ import dagger.Reusable
 @Module
 object ApplicationModule {
 
+    private const val DB_PRODUCT_NAME = "product1.db"
+
     @Reusable
     @Provides
     fun provideDatabase(application: Application): ProductDatabase {
         return Room.databaseBuilder(
-            application, ProductDatabase::class.java, "product1.db"
+            application,
+            ProductDatabase::class.java,
+            DB_PRODUCT_NAME
         ).build()
     }
 }
