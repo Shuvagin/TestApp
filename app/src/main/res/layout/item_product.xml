@@ -37,13 +37,14 @@
                 tools:src="@drawable/logo" />
 
             <TextView
-                android:transitionName="@{@string/tn_tv_name(product.productId)}"
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@{product.name}"
                 android:textSize="18sp"
+                android:textStyle="bold"
+                android:transitionName="@{@string/tn_tv_name(product.productId)}"
                 app:layout_constraintEnd_toEndOf="@+id/iv_image"
                 app:layout_constraintStart_toStartOf="@+id/iv_image"
                 app:layout_constraintTop_toBottomOf="@+id/iv_image"

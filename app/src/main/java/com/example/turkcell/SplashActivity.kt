@@ -60,8 +60,8 @@ class SplashActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             delay(DELAY_BEFORE_FINISH_ACTIVITY)
-            finish()
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
         }
     }
 
