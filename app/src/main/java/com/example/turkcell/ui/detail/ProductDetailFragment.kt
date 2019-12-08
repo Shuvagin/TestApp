@@ -79,6 +79,5 @@ class ProductDetailFragment : Fragment() {
     companion object {
         const val MAX_SCALE_SIZE = 1.5f
         const val NORMAL_SCALE_SIZE = 1f
-        const val ANIMATION_EXIT_DURATION = 100L
     }
 }
