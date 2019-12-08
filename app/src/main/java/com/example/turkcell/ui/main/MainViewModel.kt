@@ -31,7 +31,7 @@ class MainViewModel @Inject constructor(
     }
     val listProducts = liveData {
         emitSource(getLocalProductListUseCase.execute())
-        loadRemoteProducts()
+        loadAndSaveRemoteProducts()
     }
 
     private suspend fun loadRemoteProductDetails(productId: String) {
@@ -46,7 +46,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private suspend fun loadRemoteProducts() {
+    private suspend fun loadAndSaveRemoteProducts() {
             try {
                 _isLoading.value = true
                 val products = getRemoteProductsUseCase.execute()
