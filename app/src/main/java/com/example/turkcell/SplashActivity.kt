@@ -1,6 +1,7 @@
 package com.example.turkcell
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.transition.TransitionManager
 import android.view.View
@@ -54,6 +55,7 @@ class SplashActivity : AppCompatActivity() {
             getColorFromAttr(R.attr.myBackgroundColor),
             DURATION_ANIMATION
         )?.doOnEnd {
+            window.decorView.setBackgroundColor(Color.WHITE)
             TransitionManager.beginDelayedTransition(binding.root as ViewGroup)
             binding.tvLogo.visibility = View.VISIBLE
         }
